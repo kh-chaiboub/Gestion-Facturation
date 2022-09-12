@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name="clients")
 @Data
@@ -21,4 +23,7 @@ public class ClientEntity implements Serializable {
     private String lastname;
     @Column(name ="phone_client")
     private String phone;
+    @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<FactureEntity> factures;
+
 }
